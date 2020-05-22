@@ -26,6 +26,10 @@ public class Car implements Comparable<Car> {
         return position;
     }
 
+    public boolean equalPosition(int position) {
+        return this.position == position;
+    }
+
     @Override
     public int compareTo(Car o) {
         return Integer.compare(o.position, position);
