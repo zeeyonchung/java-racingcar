@@ -4,8 +4,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import racingcar.domain.strategy.FalseMoveStrategy;
-import racingcar.domain.strategy.TrueMoveStrategy;
 
 import java.util.List;
 
@@ -42,7 +40,7 @@ class CarMoverTest {
     @Test
     void moveWithTrueMoveStrategy_Then_positionIs1GreaterThanBeforePosition() {
         Cars cars = new Cars(TestCarFactory.createList(1));
-        CarMover mover = new CarMover(new TrueMoveStrategy());
+        CarMover mover = new CarMover(() -> true);
 
         Cars moved = mover.move(cars);
 
@@ -53,7 +51,7 @@ class CarMoverTest {
     @Test
     void moveWithFalseMoveStrategy_Then_positionIs1GreaterThanBeforePosition() {
         Cars cars = new Cars(TestCarFactory.createList(1));
-        CarMover mover = new CarMover(new FalseMoveStrategy());
+        CarMover mover = new CarMover(() -> false);
 
         Cars moved = mover.move(cars);
 
